@@ -1,23 +1,18 @@
 n = int(input())
-stack = []
-answer = []
-flag = 0
-cur = 1
-for i in range(n):
-    num = int(input())
-    while cur <= num:       
-        stack.append(cur)
+
+stack, num, answer = [], 1, []
+for case in range(0, n):
+    data_input = int(input())
+    while data_input >= num:
+        stack.append(num)
         answer.append("+")
-        cur += 1
-
-    if stack[-1] == num:    
-        stack.pop()         
+        num += 1
+    if data_input == stack[-1]:
+        stack.pop()
         answer.append("-")
-    else:                   
-        print("NO")         
-        flag = 1            
-        break
 
-if flag == 0:
-    for i in answer:
-        print(i, end=" ")
+if stack:
+    print("NO")
+else:
+    for val in answer:
+        print(val)
