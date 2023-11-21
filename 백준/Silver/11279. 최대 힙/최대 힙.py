@@ -1,22 +1,17 @@
 import sys
 import heapq
 
-n = int(sys.stdin.readline())
+input = sys.stdin.readline
+n = int(input())
 heap = []
-answer = []
 
-for i in range(n):
-    x = int(sys.stdin.readline())
-
-    if x == 0:
-        if heap:
-            num = (-1) * heapq.heappop(heap)
-            answer.append(num)
+for case in range(n):
+    num = int(input())
+    if num == 0:
+        if len(heap) == 0:
+            print(0)
         else:
-            answer.append(0)
+            print(heapq.heappop(heap)*(-1))
 
     else:
-        heapq.heappush(heap, -x)
-
-for i in answer:
-    print(i)
+        heapq.heappush(heap, num * (-1))
