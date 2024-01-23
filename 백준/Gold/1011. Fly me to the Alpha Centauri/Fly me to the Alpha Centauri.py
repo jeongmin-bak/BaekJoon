@@ -1,19 +1,20 @@
-T = int(input())
+import math
+import sys
 
-for i in range(T):
-    start, end = map(int, input().split())
+input = sys.stdin.readline
 
-    d = end - start
-
-    n = 0
-
-    while True:
-        if d <= n * (n + 1):
-            break
-        n += 1
-
-    if d <= n ** 2:
-        print(n * 2 - 1)
-
+def fun2(distance):
+    max = int(math.sqrt(distance))
+    if max == math.sqrt(distance):
+        print(2 * max -1)
+    elif distance <= (max * max + max):
+        print(2 * max)
     else:
-        print(n * 2)
+        print(2 * max+1)
+    return
+
+
+T = int(input())
+for case in range(T):
+    x, y = map(int, input().split())
+    fun2(y-x)
