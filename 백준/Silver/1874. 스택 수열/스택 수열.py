@@ -1,7 +1,8 @@
 n = int(input())
 
 stack, num, answer = [], 1, []
-for case in range(0, n):
+
+for case in range(n):
     data_input = int(input())
     while data_input >= num:
         stack.append(num)
@@ -14,5 +15,5 @@ for case in range(0, n):
 if stack:
     print("NO")
 else:
-    for val in answer:
-        print(val)
+    for res in answer:
+        print(res)
