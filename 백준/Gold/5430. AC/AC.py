@@ -4,7 +4,7 @@ input = sys.stdin.readline
 
 T = int(input())
 for _ in range(T):
-    funcp = deque(input().rstrip())
+    funcp = list(input().rstrip())
     n = int(input())
     nums = deque(input().rstrip()[1:-1].split(","))
 
