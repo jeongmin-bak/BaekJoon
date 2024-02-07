@@ -1,35 +1,32 @@
 import sys
 from collections import deque
+input = sys.stdin.readline
 
-test_cases = int(input())
-
-for case in range(test_cases):
-    cmd = sys.stdin.readline().rstrip()
-    
+T = int(input())
+for _ in range(T):
+    funcp = deque(input().rstrip())
     n = int(input())
-    dq = deque(sys.stdin.readline().rstrip()[1:-1].split(","))
-    
-    if n == 0:
-        dq = deque()
+    nums = deque(input().rstrip()[1:-1].split(","))
 
-    flag = 0
-    rev = 0
-    for j in cmd:
-        if j == 'R':
-            rev += 1
-        elif j == 'D':
-            if len(dq) < 1:
-                flag = 1
-                print("error")
-                break
+    if n == 0:
+        nums = deque()
+        
+    if funcp.count('D') > len(nums):
+        print("error")
+        continue
+
+    r_cnt = 0
+    for cmd in funcp:
+        if cmd == 'R':
+            r_cnt += 1
+        elif cmd == 'D':
+            if r_cnt % 2 == 0:
+                nums.popleft()
             else:
-                if rev % 2 == 0:
-                    dq.popleft()
-                else:
-                    dq.pop()
-    if flag == 0:
-        if rev % 2 == 0:
-            print("[" + ",".join(dq) + "]")
-        else:
-            dq.reverse()
-            print("[" + ",".join(dq) + "]")
+                nums.pop()
+
+    if r_cnt % 2 == 0:
+        print("[" + ",".join(nums) + "]")
+    else:
+        nums.reverse()
+        print("[" + ",".join(nums) + "]")
