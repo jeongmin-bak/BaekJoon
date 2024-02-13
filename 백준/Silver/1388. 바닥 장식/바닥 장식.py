@@ -25,9 +25,7 @@ def dfs(i, j, tile):
 
 for i in range(n):
     for j in range(m):
-        if floor[i][j] == '-' and visited[i][j] == False:
-            dfs(i, j, '-')
-        if floor[i][j] == '|' and visited[i][j] == False:
-            dfs(i, j, '|')
+        if visited[i][j] == False:
+            dfs(i, j, floor[i][j])
 
 print(cnt)
