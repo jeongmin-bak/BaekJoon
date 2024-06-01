@@ -1,6 +1,3 @@
-txt = input().split('-')
-result = ''
-for x in txt:
-    result += x[0]
-
-print(result)
+a = input().split('-')
+for i in range(len(a)):
+    print(list(a[i])[0], end='')
