@@ -1,24 +1,19 @@
 import sys
-from collections import deque
 
-# 추가문제 : 인덱스 구하기
 input = sys.stdin.readline
 
-bars = deque()
-n = int(input())
+N = int(input())
+stack = []
 
-for _ in range(n):
-    bars.append(int(input()))
+for _ in range(N):
+    stack.append(int(input()))
 
-std = bars.pop()
-cnt = 1
+last = stack[-1]
+count = 1
 
-#방법1
-while bars:
-    if bars[-1] > std:
-       std = bars.pop()
-       cnt += 1
-    else:
-        bars.pop()
+for i in reversed(range(N)):
+    if stack[i] > last:
+        count += 1
+        last = stack[i]
 
-print(cnt)
+print(count)
